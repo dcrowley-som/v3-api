@@ -1,0 +1,50 @@
+{
+  "author": "David Crowley <dcrowley@som.umaryland.edu>",
+  "name": "anes-atlas-api-v3",
+  "description": "v3 Atlas API",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "dependencies": {
+    "@types/mssql": "^9.1.6",
+    "actionhero": "29.3.2",
+    "axios": "^1.7.9",
+    "ioredis": "latest",
+    "ioredis-mock": "latest",
+    "mongoose": "^8.9.5",
+    "mssql": "^11.0.1",
+    "winston": "latest",
+    "ws": "latest"
+  },
+  "devDependencies": {
+    "@types/formidable": "^3.4.5",
+    "@types/glob": "latest",
+    "@types/jest": "latest",
+    "@types/node": "latest",
+    "jest": "latest",
+    "prettier": "latest",
+    "ts-jest": "latest",
+    "ts-node-dev": "latest",
+    "type-fest": "latest",
+    "typescript": "latest"
+  },
+  "scripts": {
+    "postinstall": "npm run build",
+    "dev": "ts-node-dev --no-deps --transpile-only ./src/server",
+    "debug": "tsc && ts-node-dev --transpile-only --no-deps --inspect -- ./src/server ",
+    "start": "node ./dist/server.js",
+    "actionhero": "actionhero",
+    "test": "jest",
+    "pretest": "npm run build && npm run lint",
+    "build": "tsc --sourceMap false --declaration",
+    "lint": "prettier --check src/*/** __tests__/*/**",
+    "pretty": "prettier --write src/*/** __tests__/*/**"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    }
+  }
+}
