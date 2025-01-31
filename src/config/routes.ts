@@ -35,6 +35,7 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
         { path: "/users/import", action: "importUsers" },
           // Reporting - Episodes
         { path: '/reporting/episodes/overview', action: "reportingEpisodesOverview" },
+        { path: '/reporting/episodes/monthly', action: "reportingEpisodesMonthly" },
       ],
 
       /* ---------------------
