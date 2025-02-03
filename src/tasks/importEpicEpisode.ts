@@ -29,7 +29,7 @@ export class ImportEpicEpisode extends Task {
             anesStart: tz(data.AN_START_DATETIME),
             anesStop: tz(data.AN_STOP_DATETIME),
             surgeryDate: tz(data.SURGERY_DATETIME),
-            ourORDate: tz(data.OUT_OR_DTTM),
+            outORDate: tz(data.OUT_OR_DTTM),
             logId: data.LOG_ID,
             mrn: data.PAT_MRN,
             birthDate: data.BIRTH_DATE,

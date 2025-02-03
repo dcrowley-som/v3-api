@@ -1,8 +1,8 @@
 {
   "author": "David Crowley <dcrowley@som.umaryland.edu>",
-  "name": "anes-atlas-api-v3",
+  "name": "anes-atlas-v3-api",
   "description": "v3 Atlas API",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "engines": {
     "node": ">=8.0.0"
   },

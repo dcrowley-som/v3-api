@@ -22,6 +22,10 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
         { path: "/users/match/clinicians", action: "matchUserClinician" },
         { path: "/users/match/episodes", action: "matchEpisodeWithUser" },
         { path: "/users/match/assignments", action: "matchAssignmentsWithUser" },
+        { path: "/users/clinicians/list", action: "usersCliniciansList"},
+        // Reporting Episodes
+        { path: "/reporting/episodes/select-lists", action: "reportingEpisodesSelectLists" },
+
       ],
       post: [
           // Spin Fusion
@@ -36,6 +40,9 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
           // Reporting - Episodes
         { path: '/reporting/episodes/overview', action: "reportingEpisodesOverview" },
         { path: '/reporting/episodes/monthly', action: "reportingEpisodesMonthly" },
+        { path: '/reporting/episodes/table', action: "reportingEpisodesTable" },
+        { path: '/reporting/episodes/provider', action: "reportingEpisodesProvider" },
+        { path: '/reporting/episodes/details', action: "reportingEpisodesDetails" },
       ],
 
       /* ---------------------
