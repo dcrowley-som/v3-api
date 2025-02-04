@@ -30,7 +30,7 @@ export class ImportAllSpinFusion extends Action {
                 await task.enqueue('GetSFAssignmentsForSchedule', { startString: '2024-07-01', endString: '2024-07-31', schedule }, 'spin-fusion');
                 await task.enqueueIn(delay,'GetSFAssignmentsForSchedule', { startString: '2024-08-01', endString: '2024-08-31', schedule }, 'spin-fusion');
                 await task.enqueueIn(delay * 2,'GetSFAssignmentsForSchedule', { startString: '2024-09-01', endString: '2024-09-30', schedule }, 'spin-fusion');
-                await task.enqueueIn(delay * 3,'GetSFAssignmentsForSchedule', { startString: '2023-10-31', endString: '2023-10-31', schedule }, 'spin-fusion');
+                await task.enqueueIn(delay * 3,'GetSFAssignmentsForSchedule', { startString: '2024-10-31', endString: '2024-10-31', schedule }, 'spin-fusion');
                 await task.enqueueIn(delay * 3,'GetSFAssignmentsForSchedule', { startString: '2024-10-01', endString: '2024-10-31', schedule }, 'spin-fusion');
                 await task.enqueueIn(delay * 4,'GetSFAssignmentsForSchedule', { startString: '2024-11-01', endString: '2024-11-30', schedule }, 'spin-fusion');
                 await task.enqueueIn(delay * 5,'GetSFAssignmentsForSchedule', { startString: '2024-12-01', endString: '2024-12-31', schedule }, 'spin-fusion');

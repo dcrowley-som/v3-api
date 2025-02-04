@@ -25,6 +25,9 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
         { path: "/users/clinicians/list", action: "usersCliniciansList"},
         // Reporting Episodes
         { path: "/reporting/episodes/select-lists", action: "reportingEpisodesSelectLists" },
+          // Assignments
+        {path: '/spin-fusion/fix/duplicates', action: "removeDuplicateAssignments"},
+        {path: '/spin-fusion/fix/users', action: "fixSFUsers"},
 
       ],
       post: [
@@ -43,6 +46,8 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
         { path: '/reporting/episodes/table', action: "reportingEpisodesTable" },
         { path: '/reporting/episodes/provider', action: "reportingEpisodesProvider" },
         { path: '/reporting/episodes/details', action: "reportingEpisodesDetails" },
+          // Report assignments
+        { path: '/reporting/assignments/overview', action: "reportingAssignmentsOverview" },
       ],
 
       /* ---------------------

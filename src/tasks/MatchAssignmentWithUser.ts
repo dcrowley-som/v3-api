@@ -14,6 +14,7 @@ export class MatchAssignmentWithUser extends Task {
 
     async run(data: IUser) {
         await SFAssignment.updateMany({
+            user: {$exists: false},
             $or: [
                 { uCode: data.sfUserCode },
                 { uId: data.sfUserId }
