@@ -228,7 +228,6 @@ export class FixSFUsers extends Action {
                 },
                 "count": 4
             },
-            
             {
                 "_id": {
                     "lName": "Browning",

@@ -35,7 +35,8 @@ export interface IEpicEpisode {
     fiscalYear: number,
     anMonth: string,
     fpiFiscalQ: number,
-    qtr: string
+    qtr: string,
+    invoices?: string[]
 }
 
 const schema = new Schema<IEpicEpisode>({
@@ -76,7 +77,11 @@ const schema = new Schema<IEpicEpisode>({
     fiscalYear: Number,
     anMonth: String,
     fpiFiscalQ: Number,
-    qtr: String
+    qtr: String,
+    invoices: [{
+        type: Types.ObjectId,
+        ref: 'InvoiceMatch',
+    }],
 }, { timestamps: true });
 
 export const EpicEpisode = model<IEpicEpisode>('EpicEpisode', schema);

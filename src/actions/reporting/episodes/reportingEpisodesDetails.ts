@@ -17,31 +17,26 @@ export class ReportingEpisodesDetails extends Action {
     }
 
     async run({ params }: { params: ParamsFrom<ReportingEpisodesDetails> }) {
-        const categories: any = params.categories;
+        const cats: any = params.categoriess;
+        const categories: any[] | undefined = cats && cats.list && cats.list.length > 0 ? cats.list : undefined;
         const dates = api.helpers.datesFromParams(params);
         const start = dates.start;
         const end = dates.end;
         let match: any = {
-                $match: {
+            $match: {
                     date: {
                         $gte: start,
                         $lte: end
                     },
-                    cat1: { $in: categories.list }
                 }
             };
-        if (params.user) {
-            match = {
-                $match: {
-                    date: {
-                        $gte: start,
-                            $lte: end
-                    },
-                    user : new Types.ObjectId(params.user),
-                    cat1: { $in: categories.list }
-                }
-            };
+        if (categories) {
+            match.$match.cat1 = {$in: categories};
         }
+        if (params.user) {
+            match.$match.user = new Types.ObjectId(params.user);
+        }
+        console.log(match)
         const rows = await EpicEpisode.aggregate(
             [
                 match,

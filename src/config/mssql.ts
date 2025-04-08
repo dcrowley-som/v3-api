@@ -11,7 +11,8 @@ declare module "actionhero" {
 export const DEFAULT = {
   [namespace]: (config: ActionheroConfigInterface) => {
     return {
-      enabled:  process.env.ENABLE_MSSQL === 'yes',
+      // enabled:  process.env.ENABLE_MSSQL === 'yes',
+      enabled: true,
       configuration: {
         user: 'atlas',
         password: '^8X3#xGAzZ~n:qM]',

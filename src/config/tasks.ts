@@ -19,7 +19,7 @@ export const DEFAULT = {
 
       // what queues should the taskProcessors work?
       // queues: ["*"] as string[] | (() => Promise<string[]>),
-      queues: ['high', 'normal', 'spin-fusion', 'epic-episodes', 'low'] as string[] | (() => Promise<string[]>),
+      queues: ['high', 'normal', 'spin-fusion', 'epic-episodes', 'after-episode', 'low'] as string[] | (() => Promise<string[]>),
       // Or, rather than providing a static list of `queues`, you can define a method that returns the list of queues.
       // queues: async () => { return ["queueA", "queueB"]; } as string[] | (() => Promise<string[]>)>,
 

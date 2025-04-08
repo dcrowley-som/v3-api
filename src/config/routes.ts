@@ -26,11 +26,18 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
         // Reporting Episodes
         { path: "/reporting/episodes/select-lists", action: "reportingEpisodesSelectLists" },
           // Assignments
+        {path: 'reporting/assignments/list', action: "reportingAssignmentsList"},
         {path: '/spin-fusion/fix/duplicates', action: "removeDuplicateAssignments"},
         {path: '/spin-fusion/fix/users', action: "fixSFUsers"},
-
+        {path: 'spin-fusion/process/concurrencies', action: "processConcurrencies"},
+        // invoices
+        { path: '/episodes/invoices/match', action: "matchEpisodeWithInvoices" },
       ],
       post: [
+        // Invoices
+        { path: '/invoices/import', action: 'importInvoiceMatches' },
+          // Clinical Day
+        { path: "clinical-days/process", action: "processClinicalDays" },
           // Spin Fusion
           { path: "/spin-fusion/import", action: "importSpinFusion" },
           { path: "/spin-fusion/import/all", action: "importAllSpinFusion" },
@@ -48,6 +55,10 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
         { path: '/reporting/episodes/details', action: "reportingEpisodesDetails" },
           // Report assignments
         { path: '/reporting/assignments/overview', action: "reportingAssignmentsOverview" },
+        { path: '/reporting/assignments/provider', action: "reportingAssignmentsProvider" },
+        { path: '/reporting/assignments/concurrency', action: "reportingConcurrency" },
+          // reporting invoices
+        { path: '/reporting/invoices/unmatched', action: "reportingUnmatched" },
       ],
 
       /* ---------------------

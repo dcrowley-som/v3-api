@@ -14,6 +14,7 @@ export class MatchEpisodeWithUser extends Task {
 
     async run(data: IUser) {
         await EpicEpisode.updateMany({
+            user: undefined,
             $or: [
                 { responsibleProvName: data.epicProvName },
                 { responsibleProvId: data.epicProvId }
