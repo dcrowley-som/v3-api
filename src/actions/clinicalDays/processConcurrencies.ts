@@ -56,6 +56,7 @@ export class ProcessConcurrencies extends Action {
             }
         ]);
 
+
         for (const user of users) {
             await task.enqueue('ProcessUserConcurrency', {startDate, endDate, user}, 'after-episode');
         }

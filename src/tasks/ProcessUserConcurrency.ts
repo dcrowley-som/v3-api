@@ -13,11 +13,18 @@ export class ProcessUserConcurrency extends Task {
 
 
     async run(data: any) {
-        const report = await api.assignments.processConcurrency(new Date(data.startDate), new Date(data.endDate), data.user._id, "Work");
+        const report = await api.assignments.processConcurrency(new Date(data.startDate), new Date(data.endDate), data.user._id, '');
+        // console.log(data)
+        // console.log(report);
+        // return;
         const toSave: IReportConcurrencyItem[] = report.map((row: any) => {
             return {
                 count: row.count,
                 countSevenToFour: row.countSevenToFour,
+                countFourToSeven: row.countFourToSeven,
+                countSevenToEleven: row.countSevenToEleven,
+                countElevenToSeven: row.countElevenToSeven,
+                countPreSeven: row.countPreSeven,
                 date: row.date,
                 hasOne: row.hasOne,
                 hasTwo: row.hasTwo,

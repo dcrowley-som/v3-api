@@ -12,7 +12,7 @@ export const DEFAULT = {
   [namespace]: (config: ActionheroConfigInterface) => {
     return {
       // enabled:  process.env.ENABLE_MSSQL === 'yes',
-      enabled: true,
+      enabled: false,
       configuration: {
         user: 'atlas',
         password: '^8X3#xGAzZ~n:qM]',

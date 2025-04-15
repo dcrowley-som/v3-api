@@ -1,5 +1,6 @@
 import {Action, api, ParamsFrom} from "actionhero";
 import {SFAssignment} from "../../../models/sfassignment";
+import scheduleNames from "../../../../use_schedule_names.json";
 
 export class ReportingAssignmentsOverview extends Action {
     constructor() {
@@ -29,7 +30,8 @@ export class ReportingAssignmentsOverview extends Action {
                         date: {
                             $gte: new Date(start),
                             $lte: new Date(end),
-                        }
+                        },
+                        "schedule.name": { $in: scheduleNames.names }
                     }
             },
             {

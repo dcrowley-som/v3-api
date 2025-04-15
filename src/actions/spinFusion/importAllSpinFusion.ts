@@ -13,6 +13,7 @@ export class ImportAllSpinFusion extends Action {
     async run() {
         const delay = 2 * 60 * 1000;
         // Delete current records in date range
+        await SFAssignment.deleteMany({});
         // await SFAssignment.deleteMany();
         // Delete MSSQL records
         // Not yet

@@ -5,7 +5,9 @@
     "module": "commonjs",
     "target": "es2022",
     "sourceMap": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": ["./src/**/*"]
 }

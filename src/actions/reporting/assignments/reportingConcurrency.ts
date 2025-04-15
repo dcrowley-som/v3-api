@@ -1,7 +1,5 @@
 import {Action, api, log, ParamsFrom} from "actionhero";
-import {EpicEpisode} from "../../../models/epicepisode";
-import {SFAssignment} from "../../../models/sfassignment";
-import {Types} from "mongoose";
+
 
 export class ReportingConcurrency extends Action {
     constructor() {

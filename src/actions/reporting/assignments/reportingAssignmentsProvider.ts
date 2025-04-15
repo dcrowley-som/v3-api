@@ -1,6 +1,7 @@
 import {Action, api, ParamsFrom} from "actionhero";
 import {SFAssignment} from "../../../models/sfassignment";
 import {Types} from "mongoose";
+import scheduleNames from "../../../../use_schedule_names.json";
 
 export class ReportingAssignmentsProvider extends Action {
     constructor() {
@@ -47,7 +48,8 @@ export class ReportingAssignmentsProvider extends Action {
                             $gte: start,
                             $lte: end
                         },
-                        user: new Types.ObjectId(user)
+                        user: new Types.ObjectId(user),
+                        "schedule.name": {$in: scheduleNames.names},
                     }
             },
             {

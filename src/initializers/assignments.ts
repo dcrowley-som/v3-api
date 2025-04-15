@@ -1,6 +1,7 @@
 import {Initializer, api, log} from "actionhero";
 import {SFAssignment} from "../models/sfassignment";
 import {Types} from "mongoose";
+import scheduleNames from "../../use_schedule_names.json";
 
 export class assignments extends Initializer {
     constructor() {
@@ -10,22 +11,36 @@ export class assignments extends Initializer {
 
     async initialize() {
         api.assignments = {}
-        api.assignments.processConcurrency = async (start: Date, end: Date, user: string, assignment: string) => {
+        api.assignments.processConcurrency = async (start: Date, end: Date, user: string, assignment: string = '') => {
+            const schedules = scheduleNames.names;
+            let m: any = {
+                date: {
+                    $gte: start,
+                    $lte: end
+                },
+                "schedule.name": {$in: scheduleNames.names},
+                user: new Types.ObjectId(user),
+            };
+            if (assignment !== '') {
+                m = {
+                    date: {
+                        $gte: start,
+                        $lte: end
+                    },
+                    "schedule.name": {$in: scheduleNames.names},
+                    user: new Types.ObjectId(user),
+                    aName: assignment
+                }
+
+            }
             return SFAssignment.aggregate(
                 [
                     {
-                        $match:
+                        $match: m
                         /**
                          * query: The query in MQL.
                          */
-                            {
-                                date: {
-                                    $gte: start,
-                                    $lte: end
-                                },
-                                user: new Types.ObjectId(user),
-                                aName: assignment
-                            }
+
                     },
                     {
                         $project:
@@ -204,12 +219,71 @@ export class assignments extends Initializer {
                                         episodes: "$episodes"
                                     }
                                 },
+                                preSeven: {
+                                    $push: {
+                                        $cond: [
+                                            { $and: [
+                                                    {$gte: [{$hour: {date: "$_id.date", timezone: "America/New_York"}}, 0]},
+                                                    {$lt: [{$hour: {date: "$_id.date", timezone: "America/New_York"}}, 7]}
+                                                ]},
+                                            {
+                                                date: "$_id.date",
+                                                episodes: "$episodes"
+                                            },
+                                            "$$REMOVE"
+                                        ]
+                                    }
+                                },
                                 sevenToFour: {
                                     $push: {
                                         $cond: [
                                             { $and: [
                                                     {$gte: [{$hour: {date: "$_id.date", timezone: "America/New_York"}}, 7]},
-                                                    {$lte: [{$hour: {date: "$_id.date", timezone: "America/New_York"}}, 16]}
+                                                    {$lt: [{$hour: {date: "$_id.date", timezone: "America/New_York"}}, 16]}
+                                                ]},
+                                            {
+                                                date: "$_id.date",
+                                                episodes: "$episodes"
+                                            },
+                                            "$$REMOVE"
+                                        ]
+                                    }
+                                },
+                                fourToSeven: {
+                                    $push: {
+                                        $cond: [
+                                            { $and: [
+                                                    {$gte: [{$hour: {date: "$_id.date", timezone: "America/New_York"}}, 16]},
+                                                    {$lt: [{$hour: {date: "$_id.date", timezone: "America/New_York"}}, 19]}
+                                                ]},
+                                            {
+                                                date: "$_id.date",
+                                                episodes: "$episodes"
+                                            },
+                                            "$$REMOVE"
+                                        ]
+                                    }
+                                },
+                                sevenToEleven: {
+                                    $push: {
+                                        $cond: [
+                                            { $and: [
+                                                    {$gte: [{$hour: {date: "$_id.date", timezone: "America/New_York"}}, 19]},
+                                                    {$lt: [{$hour: {date: "$_id.date", timezone: "America/New_York"}}, 23]}
+                                                ]},
+                                            {
+                                                date: "$_id.date",
+                                                episodes: "$episodes"
+                                            },
+                                            "$$REMOVE"
+                                        ]
+                                    }
+                                },
+                                elevenToSeven: {
+                                    $push: {
+                                        $cond: [
+                                            { $and: [
+                                                    {$gte: [{$hour: {date: "$_id.date", timezone: "America/New_York"}}, 23]}
                                                 ]},
                                             {
                                                 date: "$_id.date",
@@ -290,6 +364,18 @@ export class assignments extends Initializer {
                                 },
                                 countSevenToFour: {
                                     $size: "$sevenToFour"
+                                },
+                                countFourToSeven: {
+                                    $size: "$fourToSeven"
+                                },
+                                countSevenToEleven: {
+                                    $size: "$sevenToEleven"
+                                },
+                                countElevenToSeven: {
+                                    $size: "$elevenToSeven"
+                                },
+                                countPreSeven: {
+                                    $size: "$preSeven",
                                 },
                                 // firstMinute: {
                                 //     $getField: {

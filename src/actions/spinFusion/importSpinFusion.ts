@@ -59,9 +59,9 @@ export class ImportSpinFusion extends Action {
 
         // Delete current records in date range
         await SFAssignment.deleteMany({
-            startDate: {$gte: startDate},
-            endDate: {$lte: endDate}
+            date: {$gte: startDate, $lte: endDate}
         });
+
         // Delete MSSQL records
         // Not yet
         // get list of schedules
