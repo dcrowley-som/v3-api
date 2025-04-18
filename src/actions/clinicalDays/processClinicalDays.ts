@@ -11,10 +11,10 @@ export class ProcessClinicalDays extends Action {
     }
 
     async run() {
-        const startDate = new Date(2025, 0, 24, 0, 0, 0, 0);
+        await task.delQueue('after-episode');
+        const startDate = new Date(2023, 0, 0, 0, 0, 0, 0);
         const endDate = new Date();
         endDate.setSeconds(endDate.getSeconds() - 1);
-        // const user = await User.findOne({last: "Bergstrom"});
         const episodes = await EpicEpisode.aggregate([
             {
                 $match: {

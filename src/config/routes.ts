@@ -57,6 +57,7 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
         { path: '/reporting/assignments/overview', action: "reportingAssignmentsOverview" },
         { path: '/reporting/assignments/provider', action: "reportingAssignmentsProvider" },
         { path: '/reporting/assignments/concurrency', action: "reportingConcurrency" },
+        { path: '/reporting/assignments/daily-snapshot', action: "reportingAssignmentsDailySnapshot" },
           // reporting invoices
         { path: '/reporting/invoices/unmatched', action: "reportingUnmatched" },
       ],

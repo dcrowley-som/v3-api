@@ -1,6 +1,7 @@
 import {log, Task} from "actionhero";
 import {ClinicalDay, IClinicalDay, IConcurrentCase} from "../models/clinicalday";
 import {EpisodeMinute} from "../models/episodeMinute";
+import {Mongoose, SchemaTypes, Types} from "mongoose";
 
 
 export class ProcessClinicalDay2 extends Task {
@@ -20,6 +21,9 @@ export class ProcessClinicalDay2 extends Task {
     async run(data: any) {
         const toSave: any[] = [];
         const episodeIds = data.day.episodes.map((e: any) => e.episodeId);
+        await EpisodeMinute.deleteMany({
+            "episodeId": { $in: episodeIds },
+        })
         for (const episode of data.day.episodes) {
             const id = episode.episodeId;
             const start = new Date(episode.anesStart);
@@ -31,15 +35,29 @@ export class ProcessClinicalDay2 extends Task {
             // console.log(minutes)
             for (let i = 0; i < minutes; i++) {
                 const d = new Date(start);
+                const aDate = new Date(d);
+                aDate.setHours(0, 0, 0, 0);
+                if (start.getHours() < 6) {
+                    aDate.setDate(aDate.getDate() - 1);
+                }
                 d.setMinutes(d.getMinutes() + i);
                 toSave.push({
-                    episode: id,
-                    date: d
+                    date: new Date(d),
+                    episodeId: id,
+                    assignmentDate: aDate,
+
                 })
+                // await EpisodeMinute.create({
+                //     date: d,
+                //     meta: {
+                //         episode: id,
+                //         assignmentDate: aDate,
+                //     }
+                // })
             }
         }
         if (toSave.length) {
-            await EpisodeMinute.insertMany(toSave);
+           await EpisodeMinute.insertMany(toSave);
         }
     }
 }

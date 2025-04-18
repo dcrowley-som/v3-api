@@ -2,13 +2,16 @@ import {Schema, model, Types} from "mongoose";
 
 
 export interface IEpisodeMinute extends Schema {
-    episode: string,
-    date: Date
+    date: Date,
+    episodeId: string,
+    assignmentDate: Date
+
 }
 
 const schema = new Schema<IEpisodeMinute>({
-    episode: String,
-    date: Date,
+    episodeId: String,
+    assignmentDate: Date,
+    date: Date
 }, { timestamps: true });
 
 export const EpisodeMinute = model<IEpisodeMinute>('EpisodeMinute', schema);
