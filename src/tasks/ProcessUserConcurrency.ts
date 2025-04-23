@@ -1,5 +1,7 @@
 import {Task, api, task} from "actionhero";
 import {IReportConcurrencyItem, ReportConcurrency} from "../models/reportConcurrency";
+import {EpicEpisode} from "../models/epicepisode";
+import {Types} from "mongoose";
 
 export class ProcessUserConcurrency extends Task {
     constructor() {
@@ -13,7 +15,24 @@ export class ProcessUserConcurrency extends Task {
 
 
     async run(data: any) {
-        const report = await api.assignments.processConcurrency(new Date(data.startDate), new Date(data.endDate), data.user._id, '');
+        // const report = await api.assignments.processConcurrency(new Date(data.startDate), new Date(data.endDate), data.user._id, '');
+        const startDate = new Date(data.startDate);
+        const endDate = new Date(data.endDate);
+        // const paddedStart = new Date(data.startDate);
+        // paddedStart.setDate(paddedStart.getDate() - 1);
+        // const paddedEnd = new Date(data.endDate);
+        // paddedEnd.setDate(paddedEnd.getDate() + 1);
+        const report = await EpicEpisode.aggregate([
+            {
+                $match: {
+                    user: new Types.ObjectId(data.user._id),
+                    date: {
+                        $gte: paddedStart,
+                        $lte: paddedEnd,
+                    }
+                }
+            }
+        ]);
         // console.log(data)
         // console.log(report);
         // return;

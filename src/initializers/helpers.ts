@@ -56,6 +56,23 @@ export class mssql extends Initializer {
                     end.setHours(0, 0, 0, 0);
                     end.setSeconds(end.getSeconds() - 1);
                     break;
+                case 'ROLLING-12':
+                    end.setDate(1);
+                    end.setHours(0, 0, 0, 0);
+                    end.setSeconds(end.getSeconds() - 1);
+                    start.setDate(1);
+                    start.setHours(0, 0, 0, 0);
+                    start.setFullYear(start.getFullYear() - 1);
+                    break;
+                case 'PREV-ROLLING-12':
+                    start.setDate(1);
+                    start.setHours(0, 0, 0, 0);
+                    start.setFullYear(start.getFullYear() - 2);
+                    end.setDate(1);
+                    end.setHours(0, 0, 0, 0);
+                    end.setSeconds(end.getSeconds() - 1);
+                    end.setFullYear(end.getFullYear() - 1);
+                    break;
                 case 'MTD':
                     start.setDate(1);
                     start.setHours(0, 0, 0, 0);
