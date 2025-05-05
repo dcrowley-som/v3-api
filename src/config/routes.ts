@@ -30,11 +30,11 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
         {path: '/spin-fusion/fix/duplicates', action: "removeDuplicateAssignments"},
         {path: '/spin-fusion/fix/users', action: "fixSFUsers"},
         {path: 'spin-fusion/process/concurrencies', action: "processConcurrencies"},
-        // invoices
-        { path: '/episodes/invoices/match', action: "matchEpisodeWithInvoices" },
+
       ],
       post: [
         // Invoices
+        { path: '/episodes/invoices/match', action: "matchEpisodeWithInvoices" },
         { path: '/invoices/import', action: 'importInvoiceMatches' },
           // Clinical Day
         { path: "clinical-days/process", action: "processClinicalDays" },

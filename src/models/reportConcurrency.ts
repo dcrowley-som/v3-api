@@ -24,7 +24,8 @@ export interface IReportConcurrencyItem {
     timeUnits: number,
     totalUnits: number,
     first: Date,
-    last: Date
+    last: Date,
+    episodes: string[]
 }
 
 const schema = new Schema<IReportConcurrencyItem>({
@@ -53,7 +54,8 @@ const schema = new Schema<IReportConcurrencyItem>({
     user: String,
     assignments: [String],
     first: Date,
-    last: Date
+    last: Date,
+    episodes: [String],
 }, { timestamps: true });
 
 export const ReportConcurrency = model<IReportConcurrencyItem>('ReportConcurrency', schema);

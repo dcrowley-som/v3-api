@@ -12,7 +12,7 @@ export class ProcessClinicalDays extends Action {
 
     async run() {
         await task.delQueue('after-episode');
-        const startDate = new Date(2023, 0, 0, 0, 0, 0, 0);
+        const startDate = new Date(2025, 0, 0, 0, 0, 0, 0);
         const endDate = new Date();
         endDate.setSeconds(endDate.getSeconds() - 1);
         const episodes = await EpicEpisode.aggregate([

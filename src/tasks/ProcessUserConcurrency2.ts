@@ -3,6 +3,7 @@ import {IReportConcurrencyItem, ReportConcurrency} from "../models/reportConcurr
 import {SFAssignment} from "../models/sfassignment";
 import {EpisodeMinute} from "../models/episodeMinute";
 import {Types} from "mongoose";
+import scheduleNames from "../../use_schedule_names.json";
 import {EpicEpisode} from "../models/epicepisode";
 
 export class ProcessUserConcurrency2 extends Task {
@@ -22,11 +23,11 @@ export class ProcessUserConcurrency2 extends Task {
             userId: data.user
         });
         if (!row) { return }
-        // console.log("found row");
+        // // console.log("found row");
         const assignments = await SFAssignment.find({
             user: data.user,
             date: new Date(data.date),
-            aName: { $ne: "Work"}
+            "schedule.name": {$in: scheduleNames.names},
         });
         // console.log('Assignments ' + assignments.length)
         // console.log(data)
@@ -37,13 +38,16 @@ export class ProcessUserConcurrency2 extends Task {
                  * query: The query in MQL.
                  */
                     {
-                        user: new Types.ObjectId(data.user),
+                        //user: new Types.ObjectId(data.user),
                         invoices: {
                             $not: {
                                 $size: 0
                             }
                         },
-                        date: new Date(data.date)
+                        //date: new Date(data.date)
+                        episodeId: {
+                            $in: data.episodes
+                        }
                     }
             },
             {
