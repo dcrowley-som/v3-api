@@ -50,11 +50,12 @@ export const DEFAULT = {
       rootEndpointType: "api",
       // In addition to what's defined in config/routes.ts, should we make a route for every action?  Useful for debugging or simple APIs.
       // automaticRoutes should an array of strings - HTTP verbs, ie: [] (default), ['get'], ['post'], ['get','put'], ['get','post','put'], etc.
-      automaticRoutes: process.env.AUTOMATIC_ROUTES
-        ? process.env.AUTOMATIC_ROUTES.split(",")
-            .map((v) => v.trim())
-            .map((v) => v.toLowerCase())
-        : [],
+      // automaticRoutes: process.env.AUTOMATIC_ROUTES
+      //   ? process.env.AUTOMATIC_ROUTES.split(",")
+      //       .map((v) => v.trim())
+      //       .map((v) => v.toLowerCase())
+      //   : [],
+      automaticRoutes: false,
       // Default HTTP status code for errors thrown in an action
       defaultErrorStatusCode: 500,
       // The cache or (if etags are enabled) next-revalidation time to be returned for all flat files served from /public; defined in seconds

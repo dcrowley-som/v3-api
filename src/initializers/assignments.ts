@@ -1,7 +1,6 @@
 import {Initializer, api, log} from "actionhero";
 import {SFAssignment} from "../models/sfassignment";
 import {Types} from "mongoose";
-import scheduleNames from "../../use_schedule_names.json";
 
 export class assignments extends Initializer {
     constructor() {
@@ -11,14 +10,42 @@ export class assignments extends Initializer {
 
     async initialize() {
         api.assignments = {}
+        api.assignments.useScheduleNames = {
+            "names": [
+                "CRNA GOR Daily",
+                "CRNA GOR Leave",
+                "CRNA MTC Daily",
+                "CRNA MTC Leave",
+                "CRNA TOR Call",
+                "CRNA TOR Daily",
+                "CRNA TOR Leave",
+                "Fellow Call",
+                "Fellow Leave",
+                "GOR Call",
+                "Pain Daily",
+                "Peds Daily",
+                "Phys Daily",
+                "Phys Leave",
+                "Phys Overtime",
+                "Resident Call",
+                "Resident Leave",
+                "Rotation Schedule",
+                "STC Phys Daily",
+                "STC Phys Leave",
+                "Subspecialty Call",
+                "UMR CRNA Daily",
+                "UMROI + MTC Call + Daily",
+                "UMROI + MTC Leave",
+                "UMROI + MTC Overtime"
+            ]
+        }
         api.assignments.processConcurrency = async (start: Date, end: Date, user: string, assignment: string = '') => {
-            const schedules = scheduleNames.names;
             let m: any = {
                 date: {
                     $gte: start,
                     $lte: end
                 },
-                "schedule.name": {$in: scheduleNames.names},
+                "schedule.name": {$in: api.assignments.useScheduleNames.names},
                 user: new Types.ObjectId(user),
             };
             if (assignment !== '') {
@@ -27,7 +54,7 @@ export class assignments extends Initializer {
                         $gte: start,
                         $lte: end
                     },
-                    "schedule.name": {$in: scheduleNames.names},
+                    "schedule.name": {$in: api.assignments.useScheduleNames.names},
                     user: new Types.ObjectId(user),
                     aName: assignment
                 }

@@ -2,9 +2,9 @@
   "author": "David Crowley <dcrowley@som.umaryland.edu>",
   "name": "anes-atlas-v3-api",
   "description": "v3 Atlas API",
-  "version": "0.0.1",
+  "version": "0.0.5.0",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=22.0.0"
   },
   "dependencies": {
     "@types/mssql": "^9.1.6",

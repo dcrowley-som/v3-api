@@ -1,0 +1,26 @@
+FROM node:23-alpine
+#FROM --platform=linux/amd64 alpine AS build_amd64
+ENV NODE_ENV=production,
+ENV PORT=8080
+ENV ENABLE_MSSQL=no
+ENV MIN_TASK_PROCESSORS=0
+ENV MONGO_CONN="mongodb+srv://anesdataboss:Yf0ZSQDhKIM4uNxz@anes-prod-1.i0u3q.azure.mongodb.net/v3atlas?retryWrites=true&w=majority"
+ENV REDIS_DB=9
+ENV REDIS_HOST="anes-cache-3.redis.cache.windows.net"
+ENV REDIS_PASSWORD="PlveXC0cqNBavLO0KJ30VGNgADiQJGJeUkOVuj88v0g="
+ENV REDIS_PORT=6380
+ENV REDIS_SSL=true
+ENV TASK_SCHEDULER=no
+
+WORKDIR /actionhero
+
+# needed for tests
+# RUN apk add chromium
+
+COPY package*.json ./
+COPY . .
+RUN npm install
+RUN npm run build
+
+CMD ["node", "./dist/server.js"]
+EXPOSE $PORT

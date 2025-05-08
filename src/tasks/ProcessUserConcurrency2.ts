@@ -3,7 +3,6 @@ import {IReportConcurrencyItem, ReportConcurrency} from "../models/reportConcurr
 import {SFAssignment} from "../models/sfassignment";
 import {EpisodeMinute} from "../models/episodeMinute";
 import {Types} from "mongoose";
-import scheduleNames from "../../use_schedule_names.json";
 import {EpicEpisode} from "../models/epicepisode";
 
 export class ProcessUserConcurrency2 extends Task {
@@ -27,7 +26,7 @@ export class ProcessUserConcurrency2 extends Task {
         const assignments = await SFAssignment.find({
             user: data.user,
             date: new Date(data.date),
-            "schedule.name": {$in: scheduleNames.names},
+            "schedule.name": {$in: api.assignments.useScheduleNames.names},
         });
         // console.log('Assignments ' + assignments.length)
         // console.log(data)

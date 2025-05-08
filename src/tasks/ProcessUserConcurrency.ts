@@ -2,7 +2,6 @@ import {Task, api, task} from "actionhero";
 import {IReportConcurrencyItem, ReportConcurrency} from "../models/reportConcurrency";
 import {Types} from "mongoose";
 import {SFAssignment} from "../models/sfassignment";
-import scheduleNames from "../../use_schedule_names.json";
 
 export class ProcessUserConcurrency extends Task {
     constructor() {
@@ -36,7 +35,7 @@ export class ProcessUserConcurrency extends Task {
                                 $lte: paddedEnd
                             },
                             user: new Types.ObjectId(data.user._id),
-                            "schedule.name": {$in: scheduleNames.names},
+                            "schedule.name": {$in: api.assignments.useScheduleNames.names},
                         }
                 },
                 {
