@@ -1,5 +1,5 @@
 import {Action, api, log, ParamsFrom} from "actionhero";
-import {EpicEpisode} from "../models/epicepisode";
+import {EpicEpisode} from "../../models/epicepisode";
 import {Types} from "mongoose";
 
 export class ReportingEpisodesDetails extends Action {

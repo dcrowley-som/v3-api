@@ -1,22 +1,20 @@
 import {Action, api, log, ParamsFrom} from "actionhero";
-import {EpicEpisode} from "../models/epicepisode";
-import {Types} from "mongoose";
+import {EpicEpisode} from "../../models/epicepisode";
 
-export class ReportingEpisodesProvider extends Action {
+export class ReportingEpisodesMonthly extends Action {
     constructor() {
         super();
-        this.name = "reportingEpisodesProvider";
-        this.description = "reportingEpisodesProvider";
+        this.name = "reportingEpisodesMonthly";
+        this.description = "reportingEpisodesMonthly";
         this.inputs = {
             selectedRange: { required: true},
             start: { required: false},
             end: { required: false},
-            user: { required: true},
             categories: { required: true}
         }
     }
 
-    async run({ params }: { params: ParamsFrom<ReportingEpisodesProvider> }) {
+    async run({ params }: { params: ParamsFrom<ReportingEpisodesMonthly> }) {
         const categories: any = params.categories;
         const dates = api.helpers.datesFromParams(params);
         const start = dates.start;
@@ -29,8 +27,7 @@ export class ReportingEpisodesProvider extends Action {
                             $gte: start,
                             $lte: end
                         },
-                        user: new Types.ObjectId(params.user),
-                        cat1: { $in: categories.list }
+                        cat1: {$in: categories.list}
                     }
                 },
                 {
@@ -88,6 +85,7 @@ export class ReportingEpisodesProvider extends Action {
                 });
             }
         }
-        return { result: fixed}
+        return { result: fixed};
+        // return { result: rows}
     }
 }

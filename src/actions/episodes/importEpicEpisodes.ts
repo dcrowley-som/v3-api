@@ -1,6 +1,6 @@
 import {Action, api, config, log, ParamsFrom, task} from "actionhero";
 import * as sql from "mssql";
-import {EpicEpisode} from "../models/epicepisode";
+import {EpicEpisode} from "../../models/epicepisode";
 
 export class ImportEpicEpisodes extends Action {
     constructor() {

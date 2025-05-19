@@ -1,5 +1,5 @@
 import {Action, task} from "actionhero";
-import {EpicEpisode} from "../models/epicepisode";
+import {EpicEpisode} from "../../models/epicepisode";
 
 
 export class ProcessClinicalDays extends Action {

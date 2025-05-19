@@ -1,6 +1,6 @@
 import {Action, api, ParamsFrom, task} from "actionhero";
-import {User} from "../models/user";
-import {EpicEpisode} from "../models/epicepisode";
+import {User} from "../../models/user";
+import {EpicEpisode} from "../../models/epicepisode";
 
 
 export class MatchEpisodeWithInvoices extends Action {

@@ -1,6 +1,6 @@
 import {Action, config, log, task} from "actionhero";
-import {User} from "../models/user";
-import {Clinician} from "../models/clinician";
+import {User} from "../../models/user";
+import {Clinician} from "../../models/clinician";
 
 
 export class MatchUserClinician extends Action {

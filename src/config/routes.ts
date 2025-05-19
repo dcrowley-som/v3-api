@@ -28,6 +28,7 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
                 {path: "/reporting/episodes/select-lists", action: "reportingEpisodesSelectLists"},
                 // Assignments
                 {path: "reporting/assignments/list", action: "reportingAssignmentsList"},
+                {path: "reporting/assignments/limited-list", action: "reportingAssignmentsLimitedList"},
                 {path: "/spin-fusion/fix/duplicates", action: "removeDuplicateAssignments"},
                 {path: "/spin-fusion/fix/users", action: "fixSFUsers"},
                 {path: "spin-fusion/process/concurrencies", action: "processConcurrencies"},
@@ -60,6 +61,8 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
                 {path: "/reporting/assignments/provider", action: "reportingAssignmentsProvider"},
                 {path: "/reporting/assignments/concurrency", action: "reportingConcurrency"},
                 {path: "/reporting/assignments/daily-snapshot", action: "reportingAssignmentsDailySnapshot"},
+                {path: "/reporting/assignments/calendar", action: "reportingCalendar"},
+                {path: "/reporting/assignments/calendar-day", action: "reportingCalendarDay"},
                 // reporting invoices
                 {path: "/reporting/invoices/unmatched", action: "reportingUnmatched"},
             ]

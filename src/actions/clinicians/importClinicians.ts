@@ -1,6 +1,6 @@
 import {Action, config, log, task} from "actionhero";
 import * as sql from "mssql";
-import {Clinician} from "../models/clinician";
+import {Clinician} from "../../models/clinician";
 
 
 export class ImportClinicians extends Action {

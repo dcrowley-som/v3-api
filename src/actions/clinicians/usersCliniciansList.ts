@@ -1,5 +1,5 @@
 import {Action, log, task} from "actionhero";
-import {User} from "../models/user";
+import {User} from "../../models/user";
 
 
 export class UsersCliniciansList extends Action {

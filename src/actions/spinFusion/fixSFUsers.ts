@@ -1,6 +1,6 @@
 import {Action, config, log} from "actionhero";
-import {SFAssignment} from "../models/sfassignment";
-import {User} from "../models/user";
+import {SFAssignment} from "../../models/sfassignment";
+import {User} from "../../models/user";
 
 export class FixSFUsers extends Action {
     constructor() {

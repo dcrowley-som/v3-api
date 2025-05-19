@@ -1,6 +1,6 @@
 import {Action, api, config, log, ParamsFrom, task} from "actionhero";
 import * as sql from "mssql";
-import {InvoiceMatch} from "../models/invoiceMatch";
+import {InvoiceMatch} from "../../models/invoiceMatch";
 
 export class ImportInvoiceMatches extends Action {
     constructor() {

@@ -1,6 +1,6 @@
 import {Action, api, config, log, ParamsFrom, task} from "actionhero";
 import axios from 'axios';
-import {SFAssignment} from "../models/sfassignment";
+import {SFAssignment} from "../../models/sfassignment";
 
 export class ImportSpinFusion extends Action {
     constructor() {

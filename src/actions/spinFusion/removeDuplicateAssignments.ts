@@ -1,5 +1,5 @@
 import {Action, config, log} from "actionhero";
-import {SFAssignment} from "../models/sfassignment";
+import {SFAssignment} from "../../models/sfassignment";
 
 export class RemoveDuplicateAssignments extends Action {
     constructor() {

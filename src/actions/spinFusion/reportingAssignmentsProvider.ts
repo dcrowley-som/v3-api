@@ -1,5 +1,5 @@
 import {Action, api, ParamsFrom} from "actionhero";
-import {SFAssignment} from "../models/sfassignment";
+import {SFAssignment} from "../../models/sfassignment";
 import {Types} from "mongoose";
 
 export class ReportingAssignmentsProvider extends Action {

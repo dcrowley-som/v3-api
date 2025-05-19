@@ -1,5 +1,5 @@
 import {Action, api, ParamsFrom} from "actionhero";
-import {EpicEpisode} from "../models/epicepisode";
+import {EpicEpisode} from "../../models/epicepisode";
 
 export class ReportingUnmatched extends Action {
     constructor() {

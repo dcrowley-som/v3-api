@@ -1,6 +1,6 @@
 import {Action, Task, task} from "actionhero";
-import {EpicEpisode} from "../models/epicepisode";
-import {ReportConcurrency} from "../models/reportConcurrency";
+import {EpicEpisode} from "../../models/epicepisode";
+import {ReportConcurrency} from "../../models/reportConcurrency";
 
 export class ProcessConcurrencies extends Action {
     constructor() {

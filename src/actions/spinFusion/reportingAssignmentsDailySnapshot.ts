@@ -1,5 +1,5 @@
 import {Action, ParamsFrom} from "actionhero";
-import {ReportConcurrency} from "../models/reportConcurrency";
+import {ReportConcurrency} from "../../models/reportConcurrency";
 import {Types} from "mongoose";
 
 
