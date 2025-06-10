@@ -15,7 +15,7 @@ export const DEFAULT = {
       _toExpand: false,
 
       // Should this node run a scheduler to promote delayed tasks?
-      scheduler: process.env.TASK_SCHEDULER === 'yes',
+      scheduler: true,
 
       // what queues should the taskProcessors work?
       // queues: ["*"] as string[] | (() => Promise<string[]>),
@@ -51,7 +51,7 @@ export const DEFAULT = {
       timeout: 5000,
       // at minimum, how many parallel taskProcessors should this node spawn?
       // (have number > 0 to enable, and < 1 to disable)
-      minTaskProcessors: process.env.MIN_TASK_PROCESSORS,
+      minTaskProcessors: 1,
       // at maximum, how many parallel taskProcessors should this node spawn?
       maxTaskProcessors: 5,
       // how often should we check the event loop to spawn more taskProcessors?
@@ -87,9 +87,9 @@ export const test = {
 export const production = {
   [namespace]: () => {
     return {
-      scheduler: (process.env.SERVER_ROLE !== 'website'),
-      minTaskProcessors: (process.env.SERVER_ROLE === 'website') ? 0 : 2,
-      maxTaskProcessors: (process.env.SERVER_ROLE === 'website') ? 0 : 10
+      scheduler: process.env.TASK_SCHEDULER === 'yes',
+      minTaskProcessors: process.env.MIN_TASK_PROCESSORS,
+      maxTaskProcessors: process.env.MAX_TASK_PROCESSORS,
     };
   },
 };

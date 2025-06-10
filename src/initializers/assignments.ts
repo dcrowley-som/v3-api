@@ -21,6 +21,7 @@ export class assignments extends Initializer {
                 "CRNA TOR Leave",
                 "Fellow Call",
                 "Fellow Leave",
+                "Fellow Rotation",
                 "GOR Call",
                 "Pain Daily",
                 "Peds Daily",

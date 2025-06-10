@@ -12,7 +12,7 @@ export class ReportingEpisodesSelectLists extends Action {
     async run() {
         const cat1 = await EpicEpisode.distinct('cat1');
         const cat2 = await EpicEpisode.distinct('cat2');
-        const providers = await User.find().select('_id first last epicProvId epicProvName')
+        const providers = await User.find().select('_id first last epicProvId epicProvName departmentCategory')
             .sort({
                 last: 1,
                 first: 1

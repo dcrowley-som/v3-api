@@ -20,6 +20,7 @@ export class ImportEpicEpisodes extends Action {
             log("MSSQL NOT ENABLED");
             return;
         }
+        await task.delQueue('epic-episodes');
         let startDate = params.startDate ? new Date(params.startDate) : new Date();
         let endDate = params.endDate ? new Date(params.endDate) : new Date();
         let category = params.category ? params.category : "ALL";

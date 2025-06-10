@@ -18,7 +18,7 @@ export const DEFAULT = {
     const konstructor = require("ioredis"); // or konstructor = require("ioredis-mock") if you don't need real redis;
     let protocol = process.env.REDIS_SSL ? "rediss" : "redis";
     let host = process.env.REDIS_HOST || "127.0.0.1";
-    let port = process.env.REDIS_PORT || 6379;
+    let port = process.env.REDIS_PORT || 8082;
     let db = process.env.REDIS_DB || process.env.JEST_WORKER_ID || "3";
     let password = process.env.REDIS_PASSWORD || null;
 

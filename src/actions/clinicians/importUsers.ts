@@ -1,6 +1,6 @@
-import {Action, config, log, task} from "actionhero";
+import {Action, log, task} from "actionhero";
 import {User} from "../../models/user";
-import axios from "axios";
+
 
 
 export class ImportUsers extends Action {

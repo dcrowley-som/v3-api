@@ -24,6 +24,8 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
                 {path: "/users/match/episodes", action: "matchEpisodeWithUser"},
                 {path: "/users/match/assignments", action: "matchAssignmentsWithUser"},
                 {path: "/users/clinicians/list", action: "usersCliniciansList"},
+                { path: "/allproviders/import", action: "importAllProviders"},
+                { path: "fix/allproviders", action: "fixAllProviders"},
                 // Reporting Episodes
                 {path: "/reporting/episodes/select-lists", action: "reportingEpisodesSelectLists"},
                 // Assignments
@@ -32,6 +34,7 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
                 {path: "/spin-fusion/fix/duplicates", action: "removeDuplicateAssignments"},
                 {path: "/spin-fusion/fix/users", action: "fixSFUsers"},
                 {path: "spin-fusion/process/concurrencies", action: "processConcurrencies"},
+                {path: "spin-fusion/ap/process/concurrencies", action: "processAPConcurrencies"},
 
             ],
             post: [
@@ -40,6 +43,7 @@ export const DEFAULT: { [namespace]: () => RoutesConfig } = {
                 {path: "/invoices/import", action: "importInvoiceMatches"},
                 // Clinical Day
                 {path: "clinical-days/process", action: "processClinicalDays"},
+                {path: "clinical-days/allproviders/process", action: "processAPClinicalDays"},
                 // Spin Fusion
                 {path: "/spin-fusion/import", action: "importSpinFusion"},
                 {path: "/spin-fusion/import/all", action: "importAllSpinFusion"},
